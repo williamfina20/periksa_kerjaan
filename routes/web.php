@@ -16,6 +16,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+// Untuk storage link
+Route::get('/generate_link', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+});
+
 Route::get('/tes', function () {
     return view('tes');
 });
