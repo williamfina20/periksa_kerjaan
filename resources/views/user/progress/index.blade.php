@@ -41,8 +41,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->mahasiswa ? $item->mahasiswa->nama : '' }}</td>
                                         <td>{{ $item->proses }}</td>
-                                        <td><a href="{{ asset('storage/' . $item->data_pendukung) }}"
-                                                class="btn btn-link">Lihat</a></td>
+                                        <td><a href="{{ asset($item->data_pendukung) }}" class="btn btn-link">Lihat</a>
+                                        </td>
                                         <td>{{ $item->keterangan }}</td>
                                         <td>{{ date('d/M/Y H:i:s', strtotime($item->created_at)) }}</td>
                                         <td>

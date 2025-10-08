@@ -47,8 +47,7 @@
                             <legend class="fieldset-legend">Data Pendukung (foto,Screenshoot, dokumen)</legend>
                             <input type="file" name="data_pendukung" class="file-input w-full" placeholder="Type here" />
                             <div>
-                                <a href="{{ asset('storage/' . $progress->data_pendukung) }}"
-                                    class="btn btn-link">Lihat</a>
+                                <a href="{{ asset($progress->data_pendukung) }}" class="btn btn-link">Lihat</a>
                                 *Kosongkan jika tidak ingin diganti
                             </div>
                             @error('data_pendukung')

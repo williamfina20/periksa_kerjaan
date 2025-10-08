@@ -32,7 +32,11 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            // ganti untuk penyimpanan dari storage ke public saja
+            // ====================
+            // 'root' => storage_path('app/public'),
+            'root' => public_path(),
+            // ====================
             'serve' => true,
             'throw' => false,
             'report' => false,
@@ -40,8 +44,13 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL') . '/storage',
+            // ganti untuk penyimpanan dari storage ke public saja
+            // ====================
+            // 'root' => storage_path('app/public'),
+            // 'url' => env('APP_URL') . '/storage',
+            'root' => public_path(),
+            'url' => env('APP_URL'),
+            // ====================
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
