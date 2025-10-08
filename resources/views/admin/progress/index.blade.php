@@ -35,8 +35,6 @@
                                     <th>No</th>
                                     <th>Mahasiswa</th>
                                     <th>Proses</th>
-                                    <th>Data Pendukung</th>
-                                    <th>Keterangan</th>
                                     <th>Waktu</th>
                                     <th>PJW</th>
                                     <th>Aksi</th>
@@ -48,15 +46,15 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->mahasiswa ? $item->mahasiswa->nama : '' }}</td>
                                         <td>{{ $item->proses }}</td>
-                                        <td><a href="{{ asset('storage/' . $item->data_pendukung) }}"
-                                                class="btn btn-link">Lihat</a></td>
-                                        <td>{{ $item->keterangan }}</td>
                                         <td>{{ date('d/M/Y H:i:s', strtotime($item->created_at)) }}</td>
                                         <td>
                                             {{ $item->users ? $item->users->name : '' }}
                                         </td>
                                         <td>
-                                            aksi
+                                            <a href="{{ asset('storage/' . $item->data_pendukung) }}"
+                                                class="btn btn-sm btn-secondary">Data Pendukung</a>
+                                            <button class="btn btn-sm"
+                                                onclick="{my_modal_1.showModal(),tampil_data(`{{ $item->mahasiswa ? $item->mahasiswa->nama : '' }}`,`{{ $item->proses }}`,`{{ $item->keterangan }}`)}">Keterangan</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -67,4 +65,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <h3 class="text-lg font-bold" id="nama_mahasiswa">Hello!</h3>
+            <p class="py-4" id="keterangan"></p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Tutup</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <script>
+        function tampil_data(mahasiswa, proses, keterangan) {
+            let nama_mahasiswa = document.getElementById('nama_mahasiswa');
+            let data_keterangan = document.getElementById('keterangan');
+
+            nama_mahasiswa.innerHTML = `${mahasiswa} > ${proses}`;
+            data_keterangan.innerHTML = keterangan;
+        }
+    </script>
 @endsection

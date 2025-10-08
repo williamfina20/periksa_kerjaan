@@ -13,7 +13,7 @@ use App\Http\Controllers\User\MahasiswaController as UserMahasiswa;
 use App\Http\Controllers\User\ProgressController as UserProgress;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/tes', function () {
