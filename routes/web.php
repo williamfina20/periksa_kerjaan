@@ -19,6 +19,7 @@ Route::get('/', function () {
 // Untuk storage link
 Route::get('/generate_link', function () {
     \Illuminate\Support\Facades\Artisan::call('storage:link');
+    return 'oke berhasil generate link';
 });
 
 Route::get('/tes', function () {
